@@ -206,35 +206,3 @@ bcgs = [
                         'domestic' : 0, 
                 },
             ]
-
-student_swe_1 = Student('Jordan', 'jordan_tran1@hotmail.com', roles[0], bcgs[0])
-student_swe_2 = Student('Tenishka', 'jordan_tran1@hotmail.com', roles[0], bcgs[1])
-
-student_ux_1 = Student('Fara', 'jordan_tran1@hotmail.com', roles[1], bcgs[2])
-student_ux_2 = Student('Azim', 'jordan_tran1@hotmail.com', roles[1], bcgs[3])
-
-student_pm_1 = Student('Edwin', 'jordan_tran1@hotmail.com', roles[2], bcgs[4])
-student_pm_2 = Student('Michael', 'jordan_tran1@hotmail.com', roles[2], bcgs[5])
-
-googlers = []
-
-googlers.append(Googler('Swe1', '@hotmail.com', roles[0], bcgs[0], 0))
-googlers.append(Googler('Swe2', '@hotmail.com', roles[0], bcgs[1], 0))
-googlers.append(Googler('Ux1', '@hotmail.com', roles[1], bcgs[2], 1))
-googlers.append(Googler('Ux2', '@hotmail.com', roles[1], bcgs[3], 1))
-googlers.append(Googler('Pm1', '@hotmail.com', roles[2], bcgs[4], 2))
-googlers.append(Googler('Pm2', '@hotmail.com', roles[2], bcgs[5], 2))
-
-print(student_swe_1.get_best_role_match(googlers)['best_googler'].name)
-print(student_swe_2.get_best_role_match(googlers)['best_googler'].name)
-print(student_ux_1.get_best_role_match(googlers)['best_googler'].name)
-print(student_ux_2.get_best_role_match(googlers)['best_googler'].name)
-print(student_pm_1.get_best_role_match(googlers)['best_googler'].name)
-print(student_pm_1.get_best_role_match(googlers)['best_googler'].name)
-
-print(student_swe_1.calculate_bcg(googlers)['best_googler'].name)
-print(student_swe_2.calculate_bcg(googlers)['best_googler'].name)
-print(student_ux_1.calculate_bcg(googlers)['best_googler'].name)
-print(student_ux_2.calculate_bcg(googlers)['best_googler'].name)
-print(student_pm_1.calculate_bcg(googlers)['best_googler'].name)
-print(student_pm_1.calculate_bcg(googlers)['best_googler'].name)
