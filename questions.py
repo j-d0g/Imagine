@@ -1,52 +1,72 @@
-        self.questions = [
+questions = [
             {
             'id' : 1, 
-            'question' : 'Select an option:'
-            'metric_skill' : []
-            'metric_bcg' : [] 
-            'option 1' : None,
-            'option 2' : None,
-            'option 3' : None,
-            'option 4' : None,
+            'option 1' : [[0, 2], [3, 2]],
+            'option 2' : [[5, 2], [3, 2]],
+            'option 3' : [[9, 2], [1, 2]],
+            'option 4' : [[7, 2], [4, 2]],
             },
             {
-            'id' : 2, 
-            'question' : 'Select an option:'
-            'metric_skill' : []
-            'metric_bcg' : [] 
-            'option 1' : None,
-            'option 2' : None,
-            'option 3' : None,
-            'option 4' : None,
+            'id' : 2, #bg
+            'option 1' : [[0, 0], [0, 0]],
+            'option 2' : [[0, 0], [1, 2]],
+            'option 3' : [[0, 0], [0, 0]],
+            'option 4' : [[0, 0], [2, 2]],
             },
             {
             'id' : 3, 
-            'question' : 'Select an option:'
-            'metric_skill' : []
-            'metric_bcg' : [] 
-            'option 1' : None,
-            'option 2' : None,
-            'option 3' : None,
-            'option 4' : None,
+            'option 1' : [[4, 2], [7, 2]],
+            'option 2' : [[2, 2], [4, 2]],
+            'option 3' : [[8, 2], [1, 2]],
+            'option 4' : [[9, 2], [0, 2]],
             },
             {
-            'id' : 4, 
-            'question' : 'Select an option:'
-            'metric_skill' : []
-            'metric_bcg' : [] 
-            'option 1' : None,
-            'option 2' : None,
-            'option 3' : None,
-            'option 4' : None,
+            'id' : 4, ##bg
+            'option 1' : [[0, 0], [0, 0]],
+            'option 2' : [[0, 2], [0, 0]],
+            'option 3' : [[0, 0], [0, 0]],
+            'option 4' : [[0, 0], [3, 2]],
             },
             {
             'id' : 5, 
-            'question' : 'Select an option:'
-            'metric_skill' : []
-            'metric_bcg' : [] 
-            'option 1' : None,
-            'option 2' : None,
-            'option 3' : None,
-            'option 4' : None,
+            'option 1' : [[6, 2], [7, 2]],
+            'option 2' : [[8, 2], [9, 2]],
+            'option 3' : [[8, 2], [3, 2]],
+            'option 4' : [[7, 2], [0, 2]],
             },
-        ]
+            {
+            'id' : 6,  ##bg
+            'option 1' : [[0, 0], [4, 2]],
+            'option 2' : [[0, 0], [0, 0]],
+            'option 3' : [[5, 2], [0, 0]],
+            'option 4' : [[0, 0], [0, 0]],
+            },
+            {
+            'id' : 7, 
+            'option 1' : [[0, 2], [7, 2]],
+            'option 2' : [[6, 2], [0, 2]],
+            'option 3' : [[0, 2], [1, 2]],
+            'option 4' : [[5, 2], [3, 2]],
+            },
+            {
+            'id' : 8, 
+            'option 1' : [[1, 2], [4, 2]],
+            'option 2' : [[8, 2], [7, 2]],
+            'option 3' : [[6, 2], [0, 2]],
+            'option 4' : [[1, 2], [9, 2]],
+            },
+            {
+            'id' : 9, 
+            'option 1' : [[1, 2], [9, 2]],
+            'option 2' : [[3, 2], [5, 2]],
+            'option 3' : [[9, 2], [1, 2]],
+            'option 4' : [[1, 2], [2, 2]],
+            },
+            {
+            'id' : 10, #bg
+            'option 1' : [[6, 2], [0, 0]],
+            'option 2' : [[0, 0], [0, 0]],
+            'option 3' : [[7, 2], [0, 0]],
+            'option 4' : [[0, 0], [0, 0]],
+            },
+            ]
