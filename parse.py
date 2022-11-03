@@ -1,10 +1,10 @@
 import csv
-file2 = open('file_name.csv', 'rt')
+file_ = open('file_name.csv', 'rt')
 contents = []
-for item in file2:
-    substring = item.strip("\n")
+for user in file_:
+    substring = user.strip("\n")
     x = substring.split(',')
     contents.append(x)
-file2.close()
+file_.close()
 contents.pop(0)
-print(contents)
+print(contents[0][3:12])
