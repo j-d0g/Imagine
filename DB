@@ -1,0 +1,56 @@
+import sqlite3
+
+database_file = 'database.db'
+connection = sqlite3.connect(database_file)
+
+cursor = connection.cursor()
+
+# if no database exists, create one
+if len(cursor.execute('SELECT name FROM sqlite_master').fetchall()) == 0:
+    cursor.execute('CREATE TABLE skills (skill TEXT PRIMARY KEY)')
+    cursor.execute('CREATE TABLE backgrounds (background TEXT PRIMARY KEY)')
+
+    cursor.execute('CREATE TABLE googlers (email TEXT PRIMARY KEY, name TEXT, skill TEXT REFERENCES skills(skill), background TEXT REFERENCES backgrounds(background))')
+    cursor.execute('CREATE TABLE candidates (email TEXT PRIMARY KEY, name TEXT, skill TEXT REFERENCES skills(skill), background TEXT REFERENCES backgrounds(background), match TEXT)')
+
+
+def add_googler(email, googler_name, skill, background):
+    skill_store = ','.join([str(i) for i in skill])
+    background_store = ','.join([str(i) for i in background])
+    
+    cursor.execute(f"INSERT INTO googlers VALUES ('{email}','{googler_name}', '{skill_store}', '{background_store}')")
+
+def retrieve_googler(email):
+    cursor.execute(f"SELECT * FROM googlers WHERE email='{email}'")
+    store = cursor.fetchall()
+    
+    name = store[0][1]
+    skill = store[0][2].split(',')
+    background = store[0][3].split(',')
+
+    return email, name, skill, background
+
+def add_candidate(email, candidate_name, skill, background, match):
+
+    skill_store = ','.join([str(i) for i in skill])
+    background_store = ','.join([str(i) for i in background])
+    match_store = ','.join([str(i) for i in match])
+    
+    cursor.execute(f"INSERT INTO candidates VALUES ('{email}','{candidate_name}', '{skill_store}', '{background_store}', '{match_store}')")
+
+def retreive_candidate(email):
+    cursor.execute(f"SELECT * FROM candidates WHERE email='{email}'")
+    store = cursor.fetchall()
+    
+    name = store[0][1]
+    skill = store[0][2].split(',')
+    background = store[0][3].split(',')
+    match = store[0][4].split(',')
+
+    return email, name, skill, background, match
+
+
+add_googler('tun@gmail.com', 'Tunde', (1, 6, 3, 11), (1,1,0,4))
+add_googler('a@gmail.com', 'a', (5, 6, 3, 11), (5,1,0,4))
+print(retrieve_googler('tun@gmail.com'))
+print(cursor.execute('SELECT * FROM skills').fetchall())

@@ -1,0 +1,62 @@
+import numpy as np
+import math as m
+
+class NaiveClassifier:
+
+    def __init__(self, number_of_classes, number_of_features):
+        self.alpha = 1.0
+
+        self.number_of_classes = number_of_classes
+        self.number_of_features = number_of_features
+
+        self.log_class_priors = np.zeros(number_of_classes)
+        self.log_class_conditional_likelihoods = np.zeros((number_of_classes, number_of_features))
+        
+    def train(self, data):
+        # sum first column
+        ones = data[:,0].sum()
+        
+        self.log_class_priors[0] = m.log((len(data) - ones) / len(data))
+        self.log_class_priors[1] = m.log(ones / len(data))
+    
+        # create mask to differentiate between spam & ham inputs, 1 is True
+        mask = data[:,0]
+        mask = mask == 1
+        mask = np.reshape(mask, (-1, 1))
+        mask = np.repeat(mask, len(data[0]), axis=1)
+        
+        n_ham = np.zeros(self.number_of_features)
+        n_spam = np.zeros(self.number_of_features)
+        
+        n_ham = data.sum(axis=0, where=np.invert(mask)) + self.alpha
+        n_spam = data.sum(axis=0, where=mask) + self.alpha
+
+        kalpha = self.alpha * len(data[0])
+        ham_total = np.multiply(n_ham.sum(), kalpha)
+        spam_total = np.multiply(n_spam.sum(), kalpha)
+
+        self.log_class_conditional_likelihoods[0] = np.log(np.divide(n_ham, ham_total))
+        self.log_class_conditional_likelihoods[1] = np.log(np.divide(n_spam, spam_total))
+        
+        self.log_class_conditional_likelihoods = np.delete(self.log_class_conditional_likelihoods, 0, 1)
+        
+    def predict(self, data):
+        class_predictions = np.zeros(len(data))
+        
+        for i in range(0, len(data)):
+            ham = self.log_class_priors[0] + np.sum(np.multiply(data[i], self.log_class_conditional_likelihoods[0]))
+            spam = self.log_class_priors[1] + np.sum(np.multiply(data[i], self.log_class_conditional_likelihoods[1]))
+            if spam > ham:
+                class_predictions[i] = 1
+                
+
+        return class_predictions
+    
+
+def create_classifier():
+    combo_spam = np.loadtxt(open("data/combo_spam.csv"), delimiter=",").astype(np.int)
+    classifier = SpamClassifier()
+    classifier.train(combo_spam)
+    return classifier
+
+classifier = create_classifier()
